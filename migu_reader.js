@@ -45,7 +45,16 @@ function openBookAndRead() {
     var totalTime = 0;
     while (totalTime <= totalReadTime) {
         sleep(readPageTime / 2);
-        swipe(width * 0.8, height - 400, width * 0.2, height - 450, 1000);
+        //随机生成 滑动的点   起点的x坐标介于宽度0.8-0.9  y坐标介于屏幕高度0.5位置到0.8位置
+        //随机生成 滑动的点   终点的x坐标介于宽度0.1-0.2  y坐标介于屏幕高度0.5位置到0.8位置
+        //滑动时间 介于800ms 到1000ms
+        var ranstartx =random(80,90)*0.01;
+        var ranstarty =random(50,80)*0.01;
+        var ranEndX =random(10,20)*0.01;
+        var ranEndY =random(50,80)*0.01;
+        var swipeTime =random(800,1000);
+        log("ranstartx:"+ranstartx+",ranstarty:"+ranstarty+",ranEndX:"+ranEndX+",ranEndY:"+ranEndY+",swipeTime:"+swipeTime);
+        swipe(width * ranstartx, height*ranstarty, width*ranEndX, height*ranEndY,swipeTime );
         sleep(readPageTime / 2);
         totalTime += readPageTime;
     }
